@@ -5,6 +5,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:studocracy/screens/join_lecture.dart';
 import 'screens/create_lecture.dart';
 import 'screens/professor_feedback.dart';
 import 'screens/role.dart';
@@ -28,9 +29,9 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Feedback'),
+          title: Text('Studocracy'),
         ),
-        body: ProfessorFeedback()
+        body: JoinLecture()
       ),
     );
   }
