@@ -20,19 +20,16 @@ class MyApp extends StatelessWidget {
       title: 'Studocracy',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          textTheme: TextTheme(title: AppBarTextStyle),
+          textTheme: TextTheme(
+              title: AppBarTextStyle
+          ),
         ),
         textTheme: TextTheme(
           title: TitleTextStyle,
           body1: BodyTextStyle
         )
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Studocracy'),
-        ),
-        body: JoinLecture()
-      ),
+      home: RoleScreen()
     );
   }
 
