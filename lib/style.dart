@@ -45,7 +45,7 @@ const InputTextStyle = TextStyle(
   fontFamily: FontNameDefault,
   fontWeight: FontWeight.w300,
   fontSize: MediumTextSize,
-  color: Colors.greenAccent,
+  color: Colors.black,
 );
 
 const HintTextStyle = TextStyle(

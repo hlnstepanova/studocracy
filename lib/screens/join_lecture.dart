@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import '../button.dart';
-import '../inputText.dart';
-import '../inputTime.dart';
+import '../widgets/button.dart';
+import '../widgets/inputText.dart';
+import '../widgets/inputTime.dart';
 
 class JoinLecture extends StatefulWidget {
   JoinLecture({Key key}) : super(key: key);
@@ -27,7 +26,7 @@ class _JoinLectureState extends State<JoinLecture> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          StyleInputText("Enter Lecture PIN"),
+         // StyleInputText("Enter Lecture PIN"),
           Center(child: Text("or scan provided QR-Code")),
           Expanded(
               flex: 5,

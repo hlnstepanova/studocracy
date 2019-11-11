@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studocracy/style.dart';
 
-import '../button.dart';
+import '../widgets/button.dart';
 
 class GiveFeedback extends StatelessWidget {
   @override
