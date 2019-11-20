@@ -61,7 +61,15 @@ class _JoinLectureState extends State<JoinLecture> {
                 margin: const EdgeInsets.all(3),
                 child: StyleButton("Join lecture",
                     onPressed:(){
-                      print("Lecture PIN: ${lecturePinController.text}");
+                      for(Lecture lecture in allLectures){
+                        if(lecture.id == lecturePinController.text){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => GiveFeedback(lecture: lecture)),
+                          );
+                          return;
+                        }
+                      }
                     })),
           ),
         ],
