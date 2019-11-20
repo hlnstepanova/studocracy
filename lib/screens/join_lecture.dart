@@ -7,9 +7,9 @@ import 'package:http/io_client.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:studocracy/backend/lecture_services.dart';
 import 'package:studocracy/model/lecture.dart';
-import 'package:studocracy/screens/give_feedback.dart';
 import '../widgets/button.dart';
 import '../widgets/inputText.dart';
+import 'give_feedback.dart';
 
 class JoinLecture extends StatefulWidget {
   JoinLecture({Key key}) : super(key: key);
@@ -29,8 +29,10 @@ class _JoinLectureState extends State<JoinLecture> {
   @override
   void initState() {
     super.initState();
-    getLectures().then((value) => allLectures = value);
+    getLectures().then((value) => this.allLectures = value);
   }
+
+
 
   @override
   void dispose() {
@@ -38,6 +40,7 @@ class _JoinLectureState extends State<JoinLecture> {
     lecturePinController.dispose();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
