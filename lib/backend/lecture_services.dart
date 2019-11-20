@@ -5,15 +5,16 @@ import 'dart:io';
 
 import '../model/lecture.dart';
 import '../model/lecturePosted.dart';
-
+final headers = {
+  HttpHeaders.contentTypeHeader: 'application/json',
+  HttpHeaders.authorizationHeader : ''
+};
+final String yannicksBaseUrl = "http://192.168.2.138:8888/lectures";
 final String baseUrl = "http://192.168.56.1:8888/lectures";
 
 Future<Lecture> postLecture(LecturePosted lecture) async {
-    final response = await http.post('$baseUrl',
-      headers: {
-        HttpHeaders.contentTypeHeader: 'application/json',
-        HttpHeaders.authorizationHeader : ''
-      },
+    final response = await http.post('$yannicksBaseUrl',
+      headers: headers,
       body: lecturePostedToJson(lecture)
   );
 
@@ -23,4 +24,16 @@ Future<Lecture> postLecture(LecturePosted lecture) async {
     print(response.statusCode);
 
   return lectureFromJson(response.body);
+}
+
+Future<List<Lecture>> getLectures() async {
+  final response = await http.get('$yannicksBaseUrl',
+      headers: headers);
+  if(response.statusCode != 200)
+    print(response.statusCode);
+  List<Lecture> lectureList = [];
+  for(Map lecture in json.decode(response.body)){
+    lectureList.add(Lecture.fromJson(lecture));
+  }
+  return lectureList;
 }

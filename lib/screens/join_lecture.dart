@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/io_client.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:studocracy/backend/lecture_services.dart';
+import 'package:studocracy/model/lecture.dart';
+import 'package:studocracy/screens/give_feedback.dart';
 import '../widgets/button.dart';
 import '../widgets/inputText.dart';
 
@@ -21,16 +24,12 @@ class _JoinLectureState extends State<JoinLecture> {
   QRViewController controller;
   final lecturePinController = TextEditingController();
   var qrText = "LECTURE #12345";
-  var allLectures = "";
+  List<Lecture> allLectures;
 
   @override
   void initState() {
     super.initState();
-    _getAllLectures().then((value) => setLectures(value));
-  }
-
-  setLectures(lectures) {
-    print(lectures);
+    getLectures().then((value) => allLectures = value);
   }
 
   @override
@@ -38,16 +37,6 @@ class _JoinLectureState extends State<JoinLecture> {
     // Clean up the controller when the widget is disposed.
     lecturePinController.dispose();
     super.dispose();
-  }
-
-  _getAllLectures() async {
-    var httpClient = new HttpClient()..badCertificateCallback =
-    ((X509Certificate cert, String host, int port) => true);
-    IOClient ioClient = new IOClient(httpClient);
-    var uri = new Uri.https('192.168.2.138:8888', '/lectures');
-    var response = await ioClient.get(uri);
-    var responseBody = response.body;
-    return responseBody;
   }
 
   @override
@@ -72,8 +61,7 @@ class _JoinLectureState extends State<JoinLecture> {
                 margin: const EdgeInsets.all(3),
                 child: StyleButton("Join lecture",
                     onPressed:(){
-                  print(allLectures);
-                  print("Lecture PIN: ${lecturePinController.text}");
+                      print("Lecture PIN: ${lecturePinController.text}");
                     })),
           ),
         ],
