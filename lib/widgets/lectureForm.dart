@@ -1,5 +1,10 @@
-import 'package:intl/intl.dart';import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'button.dart';
+import 'package:flutter/material.dart';
+import '../model/lecturePosted.dart';
 import '../screens/professor_feedback.dart';
+import '../backend/lecture_services.dart';
+import 'dart:async';
 import 'button.dart';
 import 'inputText.dart';
 import 'inputTime.dart';
@@ -17,6 +22,7 @@ class _LectureFormState extends State<LectureForm> {
   final titleController = TextEditingController();
   final timeController = TextEditingController();
 
+
   void _showDialog(String description) {
     showDialog(
       context: context,
@@ -24,6 +30,17 @@ class _LectureFormState extends State<LectureForm> {
        return StyleAlertDialog("Fehlende Eingabe", description, "OK");
       },
     );
+  }
+
+
+  createLecture(String title, DateTime endTime){
+    LecturePosted post = LecturePosted(
+        title: title,
+        endTime: endTime
+    );
+    postLecture(post).then((lecture){
+      print(lecture.id);
+    });
   }
 
   Future<Null> _selectDate(BuildContext context) async {
@@ -48,6 +65,19 @@ class _LectureFormState extends State<LectureForm> {
     super.dispose();
   }
 
+  bool approveFormInput(){
+    Duration difference = endTime.difference(DateTime.now());
+    print ("duration: ${difference.toString()}");
+    if (titleController.text.isEmpty){
+      _showDialog("Füllen Sie bitte den Titel aus");
+      return false;
+    } else if (difference < new Duration(hours:1, minutes:20)) {
+      _showDialog("Die Dauer der Vorlesung darf nicht kürzer als 1h 30m sein");
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -64,23 +94,17 @@ class _LectureFormState extends State<LectureForm> {
                       print ("Lecture title: ${titleController.text}");
                       print ("endTime: ${endTime.toIso8601String()}");
 
-                      //TODO: if title or endTime empty, show alert dialog
-                      Duration difference = endTime.difference(DateTime.now());
-                      print ("duration: ${difference.toString()}");
-                      if (titleController.text.isEmpty){
-                        _showDialog("Füllen Sie bitte den Titel aus");
-                      } else if (difference < new Duration(hours:1, minutes:20)) {
-                        _showDialog("Die Dauer der Vorlesung darf nicht kürzer als 1h 30m sein");
-                      }
-                      else {
+                      if (approveFormInput()){
                         //TODO: post createLecture()
+
+                        createLecture(titleController.text, endTime);
 
                         //TODO: show QR code
 
-                        Navigator.push(
+                        /*Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => ProfessorFeedback()),
-                        );
+                        );*/
                       }
 
                     }),
