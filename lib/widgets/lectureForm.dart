@@ -1,14 +1,14 @@
 import 'package:intl/intl.dart';
-import 'button.dart';
 import 'package:flutter/material.dart';
+import '../backend/lecture_services.dart';
 import '../model/lecturePosted.dart';
 import '../screens/professor_feedback.dart';
-import '../backend/lecture_services.dart';
-import 'dart:async';
 import 'button.dart';
+import 'dart:async';
 import 'inputText.dart';
 import 'inputTime.dart';
 import 'alertDialog.dart';
+import 'codeDialog.dart';
 
 
 class LectureForm extends StatefulWidget {
@@ -23,24 +23,21 @@ class _LectureFormState extends State<LectureForm> {
   final timeController = TextEditingController();
 
 
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    titleController.dispose();
+    timeController.dispose();
+    super.dispose();
+  }
+
   void _showDialog(String description) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-       return StyleAlertDialog("Fehlende Eingabe", description, "OK");
+       return StyleAlertDialog("Missing data", description, "OK");
       },
     );
-  }
-
-
-  createLecture(String title, DateTime endTime){
-    LecturePosted post = LecturePosted(
-        title: title,
-        endTime: endTime
-    );
-    postLecture(post).then((lecture){
-      print(lecture.id);
-    });
   }
 
   Future<Null> _selectDate(BuildContext context) async {
@@ -58,24 +55,34 @@ class _LectureFormState extends State<LectureForm> {
 
   }
 
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    titleController.dispose();
-    super.dispose();
-  }
 
   bool approveFormInput(){
     Duration difference = endTime.difference(DateTime.now());
     print ("duration: ${difference.toString()}");
     if (titleController.text.isEmpty){
-      _showDialog("Füllen Sie bitte den Titel aus");
+      _showDialog("Please fill in the title");
       return false;
     } else if (difference < new Duration(hours:1, minutes:20)) {
-      _showDialog("Die Dauer der Vorlesung darf nicht kürzer als 1h 30m sein");
+      _showDialog("The lecture cannot be shorter than 1h30");
       return false;
     }
     return true;
+  }
+
+
+  createLecture(String title, DateTime endTime){
+    LecturePosted post = LecturePosted(
+        title: title,
+        endTime: endTime
+    );
+    postLecture(post).then((lecture){
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return codeDialog(lecture.id);
+        },
+      );
+    });
   }
 
   @override
