@@ -8,6 +8,16 @@ Lecture lectureFromJson(String str) => Lecture.fromJson(json.decode(str));
 
 String lectureToJson(Lecture data) => json.encode(data.toJson());
 
+List<Lecture> allLecturesFromJson(String str) {
+  final jsonData = json.decode(str);
+  return new List<Lecture>.from(jsonData.map((l) => Lecture.fromJson(l)));
+}
+
+String allLecturesToJson(List<Lecture> data) {
+  final dyn = new List<dynamic>.from(data.map((l) => l.toJson()));
+  return json.encode(dyn);
+}
+
 class Lecture {
   String id;
   String title;

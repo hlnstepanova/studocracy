@@ -32,9 +32,5 @@ Future<List<Lecture>> getLectures() async {
       headers: headers);
   if (response.statusCode != 200)
     print(response.statusCode);
-  List<Lecture> lectureList = [];
-  for (Map lecture in json.decode(response.body)) {
-    lectureList.add(Lecture.fromJson(lecture));
-  }
-  return lectureList;
+  return allLecturesFromJson(response.body);
 }
