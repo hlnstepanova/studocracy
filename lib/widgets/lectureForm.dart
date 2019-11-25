@@ -102,16 +102,7 @@ class _LectureFormState extends State<LectureForm> {
                       print ("endTime: ${endTime.toIso8601String()}");
 
                       if (approveFormInput()){
-                        //TODO: post createLecture()
-
                         createLecture(titleController.text, endTime);
-
-                        //TODO: show QR code
-
-                        /*Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ProfessorFeedback()),
-                        );*/
                       }
 
                     }),
