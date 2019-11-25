@@ -3,8 +3,6 @@
 //     final lecture = lectureFromJson(jsonString);
 
 import 'dart:convert';
-import 'rating.dart';
-import 'feedback.dart';
 
 Lecture lectureFromJson(String str) => Lecture.fromJson(json.decode(str));
 
@@ -23,31 +21,23 @@ String allLecturesToJson(List<Lecture> data) {
 class Lecture {
   String id;
   String title;
-  int endTime;
-  List<Rating> ratings;
-  List<Feedback> feedbackList;
+  DateTime endTime;
 
   Lecture({
     this.id,
     this.title,
     this.endTime,
-    this.ratings,
-    this.feedbackList,
   });
 
   factory Lecture.fromJson(Map<String, dynamic> json) => Lecture(
     id: json["id"],
     title: json["title"],
-    endTime: json["endTime"],
-    ratings: List<Rating>.from(json["ratings"].map((x) => Rating.fromJson(x))),
-    feedbackList: List<Feedback>.from(json["feedbackList"].map((x) => Feedback.fromJson(x))),
+    endTime: DateTime.parse(json["endTime"]),
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "title": title,
-    "endTime": endTime,
-    "ratings": List<dynamic>.from(ratings.map((x) => x.toJson())),
-    "feedbackList": List<dynamic>.from(feedbackList.map((x) => x.toJson())),
+    "endTime": endTime.toIso8601String(),
   };
 }

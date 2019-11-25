@@ -3,6 +3,7 @@
 //     final feedback = feedbackFromJson(jsonString);
 
 import 'dart:convert';
+import 'lecture.dart';
 
 Feedback feedbackFromJson(String str) => Feedback.fromJson(json.decode(str));
 
@@ -22,26 +23,26 @@ class Feedback {
   String clientId;
   String message;
   int sentiment;
-  String lectureId;
+  Lecture lecture;
 
   Feedback({
     this.clientId,
     this.message,
     this.sentiment,
-    this.lectureId,
+    this.lecture,
   });
 
   factory Feedback.fromJson(Map<String, dynamic> json) => Feedback(
     clientId: json["clientId"],
     message: json["message"],
     sentiment: json["sentiment"],
-    lectureId: json["lecture_id"],
+    lecture: Lecture.fromJson(json["lecture"]),
   );
 
   Map<String, dynamic> toJson() => {
     "clientId": clientId,
     "message": message,
     "sentiment": sentiment,
-    "lecture_id": lectureId,
+    "lecture": lecture.toJson(),
   };
 }

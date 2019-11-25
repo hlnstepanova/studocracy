@@ -3,6 +3,7 @@
 //     final rating = ratingFromJson(jsonString);
 
 import 'dart:convert';
+import 'lecture.dart';
 
 Rating ratingFromJson(String str) => Rating.fromJson(json.decode(str));
 
@@ -22,26 +23,26 @@ class Rating {
   String clientId;
   String category;
   double value;
-  String lectureId;
+  Lecture lecture;
 
   Rating({
     this.clientId,
     this.category,
     this.value,
-    this.lectureId,
+    this.lecture,
   });
 
   factory Rating.fromJson(Map<String, dynamic> json) => Rating(
     clientId: json["clientId"],
     category: json["category"],
     value: json["value"].toDouble(),
-    lectureId: json["lecture_id"],
+    lecture: Lecture.fromJson(json["lecture"]),
   );
 
   Map<String, dynamic> toJson() => {
     "clientId": clientId,
     "category": category,
     "value": value,
-    "lecture_id": lectureId,
+    "lecture": lecture.toJson(),
   };
 }
