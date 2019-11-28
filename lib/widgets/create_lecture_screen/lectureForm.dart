@@ -1,13 +1,13 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import '../backend/lecture_services.dart';
-import '../model/lecturePosted.dart';
-import '../screens/professor_feedback.dart';
-import 'button.dart';
+import '../../backend/lecture_services.dart';
+import '../../model/lecturePosted.dart';
+import '../../screens/see_feedback.dart';
+import '../common/button.dart';
 import 'dart:async';
-import 'inputText.dart';
-import 'inputTime.dart';
-import 'alertDialog.dart';
+import '../common/inputText.dart';
+import '../common/inputTime.dart';
+import '../common/alertDialog.dart';
 import 'codeDialog.dart';
 
 

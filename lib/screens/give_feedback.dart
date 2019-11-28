@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:studocracy/model/lecture.dart';
 import 'package:studocracy/style.dart';
 
-import '../widgets/button.dart';
+import '../widgets/common/button.dart';
 
 class GiveFeedback extends StatelessWidget {
   final Lecture lecture;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import '../screens/professor_feedback.dart';
-import '../style.dart';
+import '../../screens/see_feedback.dart';
+import '../../style.dart';
 
 class codeDialog extends StatelessWidget {
   String lectureId;

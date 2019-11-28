@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '../style.dart';
+import '../../style.dart';
 
 class StyleInputText extends StatelessWidget {
   String _hintText;

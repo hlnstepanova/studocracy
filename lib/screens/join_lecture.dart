@@ -7,8 +7,8 @@ import 'package:http/io_client.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:studocracy/backend/lecture_services.dart';
 import 'package:studocracy/model/lecture.dart';
-import '../widgets/button.dart';
-import '../widgets/inputText.dart';
+import '../widgets/common/button.dart';
+import '../widgets/common/inputText.dart';
 import 'give_feedback.dart';
 
 class JoinLecture extends StatefulWidget {

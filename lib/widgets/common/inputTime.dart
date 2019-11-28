@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../style.dart';
+import '../../style.dart';
 
 class StyleInputTime extends StatelessWidget {
   final GestureTapCallback onTap;

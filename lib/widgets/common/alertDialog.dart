@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../style.dart';
+import '../../style.dart';
 
 class StyleAlertDialog extends StatelessWidget {
   String text;

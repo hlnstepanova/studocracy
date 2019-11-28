@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../widgets/lectureForm.dart';
+import '../widgets/create_lecture_screen/lectureForm.dart';
 
 class CreateLecture extends StatefulWidget {
   CreateLecture({Key key}) : super(key: key);
