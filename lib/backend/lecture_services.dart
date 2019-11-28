@@ -13,7 +13,7 @@ Future<Lecture> postLecture(LecturePosted lecture) async {
   );
 
   if(response.statusCode == 200)
-    print(response.body);
+    print("RESP: ${response.body}");
   else
     print("Error code: ${response.statusCode}");
 
@@ -25,5 +25,8 @@ Future<List<Lecture>> getLectures() async {
       headers: config.headers);
   if (response.statusCode != 200)
     print(response.statusCode);
+  else {
+    print("RESP: ${response.body}");
+  }
   return allLecturesFromJson(response.body);
 }

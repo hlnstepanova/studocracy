@@ -9,6 +9,9 @@ Future<List<Rating>> getRatings(String lectureId) async {
       headers: config.headers);
   if (response.statusCode != 200)
     print(response.statusCode);
+  else {
+    print("RESP: ${response.body}");
+  }
   return allRatingsFromJson(response.body);
 }
 

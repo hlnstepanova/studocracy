@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:studocracy/model/lecture.dart';
+import 'package:studocracy/widgets/see_feedback_screen/feedbackList.dart';
 import '../style.dart';
 
 class ProfessorFeedback extends StatelessWidget {
+  final Lecture lecture;
+
+  ProfessorFeedback(this.lecture);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,40 +47,7 @@ class ProfessorFeedback extends StatelessWidget {
                 ),
               ),
               //TODO: make a ListView and refresh every minute: GET getFeedback
-              ListTile(
-                title: Text('Please write bigger', style: BodyTextStyle),
-                trailing:
-                    Icon(Icons.sentiment_very_dissatisfied, color: Colors.red),
-              ),
-              ListTile(
-                title:
-                    Text('Explain pumping lemma again', style: BodyTextStyle),
-                trailing:
-                    Icon(Icons.sentiment_dissatisfied, color: Colors.yellow),
-              ),
-              ListTile(
-                title: Text('Interesting topic!', style: BodyTextStyle),
-                trailing: Icon(Icons.sentiment_satisfied, color: Colors.green),
-              ),
-              ListTile(
-                title: Text('Speak slower', style: BodyTextStyle),
-                trailing:
-                    Icon(Icons.sentiment_very_dissatisfied, color: Colors.red),
-              ),
-              ListTile(
-                title: Text('Handwriting too small', style: BodyTextStyle),
-                trailing:
-                    Icon(Icons.sentiment_dissatisfied, color: Colors.yellow),
-              ),
-              ListTile(
-                title: Text('Nice shirt', style: BodyTextStyle),
-                trailing: Icon(Icons.sentiment_satisfied, color: Colors.green),
-              ),
-              ListTile(
-                title: Text('Cannot read at all', style: BodyTextStyle),
-                trailing:
-                    Icon(Icons.sentiment_very_dissatisfied, color: Colors.red),
-              ),
+              FeedbackList(lecture.id),
             ]));
   }
 }

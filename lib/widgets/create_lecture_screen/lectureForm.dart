@@ -1,10 +1,10 @@
+import 'dart:async';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:studocracy/model/lecture.dart';
 import '../../backend/lecture_services.dart';
 import '../../model/lecturePosted.dart';
-import '../../screens/see_feedback.dart';
 import '../common/button.dart';
-import 'dart:async';
 import '../common/inputText.dart';
 import '../common/inputTime.dart';
 import '../common/alertDialog.dart';
@@ -75,11 +75,12 @@ class _LectureFormState extends State<LectureForm> {
         title: title,
         endTime: endTime
     );
+
     postLecture(post).then((lecture){
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return codeDialog(lecture.id);
+          return codeDialog(lecture);
         },
       );
     });

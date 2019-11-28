@@ -9,5 +9,9 @@ Future<List<Feedback>> getFeedbackList(String lectureId) async {
       headers: config.headers);
   if (response.statusCode != 200)
     print(response.statusCode);
-  return allFeedbackFromJson(response.body);
+  else {
+    print("RESP: ${response.body}");
+  }
+  //return allFeedbackFromJson(response.body);
+  return allFeedbackFromJson('[{"clientId": "12348","message": "Very boring","sentiment": 2,"lecture": {"id": "lecture0"}}]');
 }

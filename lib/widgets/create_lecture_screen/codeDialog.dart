@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../../screens/see_feedback.dart';
+import 'package:studocracy/model/lecture.dart';
 import '../../style.dart';
 
 class codeDialog extends StatelessWidget {
-  String lectureId;
+  final Lecture lecture;
 
-  codeDialog(this.lectureId);
+  codeDialog(this.lecture);
 
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -18,11 +19,11 @@ class codeDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Expanded(child: Text("PIN-Code: ${lectureId}"),
+                Expanded(child: Text("PIN-Code: ${lecture.id}"),
                 flex: 1,),
                 Expanded(
                     child: QrImage(
-                  data: lectureId,
+                  data: lecture.id,
                   version: QrVersions.auto,
                   size: 500.0,
                 ),
@@ -32,12 +33,10 @@ class codeDialog extends StatelessWidget {
         actions: <Widget>[
           new FlatButton(
               child: new Text("Next"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfessorFeedback()),
-                );
-              })
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfessorFeedback(lecture)),
+              ))
         ]);
   }
 }
