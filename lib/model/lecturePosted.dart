@@ -7,6 +7,7 @@ LecturePosted lecturePostedFromJson (String str) {
 
 String lecturePostedToJson (LecturePosted data) {
   final dyn = data.toJson();
+  print("REQ: ${json.encode(dyn)}");
   return json.encode(dyn);
 }
 
