@@ -12,6 +12,6 @@ Future<List<Feedback>> getFeedbackList(String lectureId) async {
   else {
     print("RESP: ${response.body}");
   }
-  //return allFeedbackFromJson(response.body);
-  return allFeedbackFromJson('[{"clientId": "12348","message": "Very boring","sentiment": 2,"lecture": {"id": "lecture0"}}]');
+  return allFeedbackFromJson(response.body);
+  //return allFeedbackFromJson('[{"clientId": "12348","message": "Very boring","sentiment": 2,"lecture": {"id": "lecture0"}}]');
 }

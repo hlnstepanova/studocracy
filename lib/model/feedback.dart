@@ -46,3 +46,19 @@ class Feedback {
     "lecture": lecture.toJson(),
   };
 }
+
+class Lecture {
+  String id;
+
+  Lecture({
+    this.id,
+  });
+
+  factory Lecture.fromJson(Map<String, dynamic> json) => Lecture(
+    id: json["id"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+  };
+}

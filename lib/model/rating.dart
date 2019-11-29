@@ -22,7 +22,7 @@ String allRatingsToJson(List<Rating> data) {
 class Rating {
   String clientId;
   String category;
-  double value;
+  int value;
   Lecture lecture;
 
   Rating({
@@ -35,7 +35,7 @@ class Rating {
   factory Rating.fromJson(Map<String, dynamic> json) => Rating(
     clientId: json["clientId"],
     category: json["category"],
-    value: json["value"].toDouble(),
+    value: json["value"],
     lecture: Lecture.fromJson(json["lecture"]),
   );
 
@@ -44,5 +44,21 @@ class Rating {
     "category": category,
     "value": value,
     "lecture": lecture.toJson(),
+  };
+}
+
+class Lecture {
+  String id;
+
+  Lecture({
+    this.id,
+  });
+
+  factory Lecture.fromJson(Map<String, dynamic> json) => Lecture(
+    id: json["id"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
   };
 }
