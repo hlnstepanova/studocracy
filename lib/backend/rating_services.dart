@@ -24,6 +24,6 @@ Future<Rating> getRatingByCategory(String lectureId, String category) async {
     print("RESP: ${response.body}");
   }
   //return ratingFromJson(response.body);
-  return ratingFromJson('{"clientId": "12348","category": "speed","value": 2.6,"lecture": {"id": "lecture0"}}');
+  return ratingFromJson('{"clientId": "12348","category": "speed","value": 2,"lecture": {"id": "lecture0"}}');
 }
 

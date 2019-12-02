@@ -22,7 +22,7 @@ String allRatingsToJson(List<Rating> data) {
 class Rating {
   String clientId;
   String category;
-  double value;
+  int value;
   Lecture lecture;
 
   Rating({
