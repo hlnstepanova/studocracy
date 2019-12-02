@@ -4,6 +4,7 @@ import 'dart:async';
 import 'services_config.dart' as config;
 import '../model/feedback.dart';
 
+//for params: https://stackoverflow.com/questions/52824388/how-do-you-add-query-parameters-to-a-dart-http-request
 Future<List<Feedback>> getFeedbackList(String lectureId) async {
   final response = await http.get('${config.baseUrl}/feedback/$lectureId',
       headers: config.headers);

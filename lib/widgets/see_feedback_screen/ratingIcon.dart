@@ -16,7 +16,7 @@ class RatingIcon extends StatefulWidget{
 
 class _RatingIconState extends State<RatingIcon>{
   Timer _timer;
-  int _ratingValue = 0;
+  double _ratingValue = 0.0;
 
   @override
   void initState() {
@@ -39,7 +39,8 @@ class _RatingIconState extends State<RatingIcon>{
 
   @override
   Widget build(BuildContext context) {
-    return helpers.setIcon(_ratingValue, true);
+    int value = _ratingValue.round();
+    return helpers.setIcon(value, true);
   }
 
 }
