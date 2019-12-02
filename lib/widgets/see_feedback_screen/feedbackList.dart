@@ -22,7 +22,7 @@ class _FeedbackListState extends State<FeedbackList> {
   void initState() {
     super.initState();
     _populateFeedbackList(widget.lectureId);
-    _timer = Timer.periodic(Duration(seconds: 5), (Timer t){
+    _timer = Timer.periodic(Duration(seconds: 30), (Timer t){
       print("Refreshing feedbackList");
       _populateFeedbackList(widget.lectureId);
     });

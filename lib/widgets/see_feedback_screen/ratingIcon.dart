@@ -22,7 +22,7 @@ class _RatingIconState extends State<RatingIcon>{
   void initState() {
     super.initState();
     _populateRating(widget.lectureId, widget.category);
-    _timer = Timer.periodic(Duration(seconds: 5), (Timer t) {
+    _timer = Timer.periodic(Duration(seconds: 30), (Timer t) {
       print("Refreshing Rating for ${widget.category}");
       _populateRating(widget.lectureId, widget.category);
     }

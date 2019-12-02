@@ -5,4 +5,4 @@ final headers = {
   HttpHeaders.authorizationHeader : ''
 };
 
-final String baseUrl = "http://192.168.56.1:8888";
+final String baseUrl = "https://studocracy.herokuapp.com";
