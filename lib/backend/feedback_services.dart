@@ -7,6 +7,7 @@ import '../model/feedback.dart';
 Future<List<Feedback>> getFeedbackList(String lectureId) async {
   final response = await http.get('${config.baseUrl}/feedback/$lectureId',
       headers: config.headers);
+  print("REQ: ${config.baseUrl}/feedback/$lectureId");
   if (response.statusCode != 200)
     print(response.statusCode);
   else {

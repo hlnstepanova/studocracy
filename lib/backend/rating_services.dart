@@ -7,6 +7,7 @@ import '../model/rating.dart';
 Future<List<Rating>> getRatings(String lectureId) async {
   final response = await http.get('${config.baseUrl}/rating/$lectureId',
       headers: config.headers);
+  print("REQ: ${config.baseUrl}/rating/$lectureId");
   if (response.statusCode != 200)
     print(response.statusCode);
   else {
@@ -18,6 +19,7 @@ Future<List<Rating>> getRatings(String lectureId) async {
 Future<Rating> getRatingByCategory(String lectureId, String category) async {
   final response = await http.get('${config.baseUrl}/rating/$lectureId/$category',
       headers: config.headers);
+  print("REQ: ${config.baseUrl}/rating/$lectureId/$category");
   if (response.statusCode != 200)
     print(response.statusCode);
   else {
