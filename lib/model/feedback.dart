@@ -22,12 +22,14 @@ String allFeedbackToJson(List<Feedback> data) {
 class Feedback {
   String clientId;
   String message;
+  DateTime created;
   int sentiment;
   Lecture lecture;
 
   Feedback({
     this.clientId,
     this.message,
+    this.created,
     this.sentiment,
     this.lecture,
   });
@@ -35,6 +37,7 @@ class Feedback {
   factory Feedback.fromJson(Map<String, dynamic> json) => Feedback(
     clientId: json["clientId"],
     message: json["message"],
+    created: json["created"],
     sentiment: json["sentiment"],
     lecture: Lecture.fromJson(json["lecture"]),
   );
@@ -42,6 +45,7 @@ class Feedback {
   Map<String, dynamic> toJson() => {
     "clientId": clientId,
     "message": message,
+    "created": created,
     "sentiment": sentiment,
     "lecture": lecture.toJson(),
   };
