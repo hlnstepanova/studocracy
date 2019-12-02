@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studocracy/model/lecture.dart';
 import 'package:studocracy/widgets/see_feedback_screen/feedbackList.dart';
+import 'package:studocracy/widgets/see_feedback_screen/ratingIcon.dart';
 import '../style.dart';
 
 class ProfessorFeedback extends StatelessWidget {
@@ -27,26 +28,17 @@ class ProfessorFeedback extends StatelessWidget {
                       Center(
                           child:
                               Text("Handwriting", style: SentimentTextStyle)),
-                      Center(
-                          child: Text("Interest", style: SentimentTextStyle)),
+                      Center(child: Text("Content", style: SentimentTextStyle)),
                     ]),
                     TableRow(children: [
-                      /*TODO: set refresh every minute according to received values from GET getRatingByCategory
-                      0-4 very dissatisfied
-                      4-6 dissatisfied
-                      6-8 satisfied
-                      8-10 very satisfied*/
-                      Icon(Icons.sentiment_satisfied,
-                          color: Colors.green, size: 60.0),
-                      Icon(Icons.sentiment_very_dissatisfied,
-                          color: Colors.red, size: 60.0),
-                      Icon(Icons.sentiment_dissatisfied,
-                          color: Colors.yellow, size: 60.0)
+                      RatingIcon(lecture.id, 'speed'),
+                      RatingIcon(lecture.id, 'handwriting'),
+                      RatingIcon(lecture.id, 'content')
                     ])
                   ],
                 ),
               ),
-              //TODO: make a ListView and refresh every minute: GET getFeedback
+              //refresh every minute
               FeedbackList(lecture.id),
             ]));
   }

@@ -15,8 +15,8 @@ Future<List<Rating>> getRatings(String lectureId) async {
   return allRatingsFromJson(response.body);
 }
 
-Future<Rating> getRatingByCategory(String category) async {
-  final response = await http.get('${config.baseUrl}/rating/$category',
+Future<Rating> getRatingByCategory(String lectureId, String category) async {
+  final response = await http.get('${config.baseUrl}/rating/$lectureId/$category',
       headers: config.headers);
   if (response.statusCode != 200)
     print(response.statusCode);
