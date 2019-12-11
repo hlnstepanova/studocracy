@@ -29,3 +29,15 @@ Future<Rating> getRatingByCategory(String lectureId, String category) async {
   //return ratingFromJson('{"clientId": "12348","category": "speed","value": 2,"lecture": {"id": "lecture0"}}');
 }
 
+Future<Rating> postRatingByCategory(Rating rating, String category) async {
+  final response = await http.get('${config.baseUrl}/rating/${rating.lecture.id}/$category',
+      headers: config.headers);
+  print("REQ: ${config.baseUrl}/rating/${rating.lecture.id}/$category");
+  if (response.statusCode != 200)
+    print(response.statusCode);
+  else {
+    print("RESP: ${response.body}");
+  }
+  return ratingFromJson(response.body);
+}
+

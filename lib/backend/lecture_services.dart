@@ -20,6 +20,17 @@ Future<Lecture> postLecture(LecturePosted lecture) async {
   return lectureFromJson(response.body);
 }
 
+Future<Lecture> getLecture(String lectureId) async {
+  final response = await http.get('${config.baseUrl}/lectures/$lectureId',
+      headers: config.headers);
+  if (response.statusCode != 200)
+    print(response.statusCode);
+  else {
+    print("RESP: ${response.body}");
+  }
+  return lectureFromJson(response.body);
+}
+
 Future<List<Lecture>> getLectures() async {
   final response = await http.get('${config.baseUrl}/lectures',
       headers: config.headers);

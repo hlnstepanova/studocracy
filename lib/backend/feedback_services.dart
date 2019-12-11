@@ -17,3 +17,15 @@ Future<List<Feedback>> getFeedbackList(String lectureId) async {
   return allFeedbackFromJson(response.body);
   //return allFeedbackFromJson('[{"clientId": "12348","message": "Very boring","sentiment": 2,"lecture": {"id": "lecture0"}}]');
 }
+
+Future<Feedback> postFeedback(Feedback feedback) async {
+  final response = await http.get('${config.baseUrl}/feedback/${feedback.lecture.id}',
+      headers: config.headers);
+  print("REQ: ${config.baseUrl}/feedback/${feedback.lecture.id}");
+  if (response.statusCode != 200)
+    print(response.statusCode);
+  else {
+    print("RESP: ${response.body}");
+  }
+  return feedbackFromJson(response.body);
+}
