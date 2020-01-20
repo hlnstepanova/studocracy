@@ -19,11 +19,9 @@ class JoinLecture extends StatefulWidget {
 }
 
 class _JoinLectureState extends State<JoinLecture> {
-  final _formKey = GlobalKey<FormState>();
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController controller;
   final lecturePinController = TextEditingController();
-  var qrText = "LECTURE #12345";
   List<Lecture> allLectures;
 
   @override
@@ -83,7 +81,7 @@ class _JoinLectureState extends State<JoinLecture> {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
       setState(() {
-        qrText = scanData;
+        lecturePinController.text = scanData;
       });
     });
   }
