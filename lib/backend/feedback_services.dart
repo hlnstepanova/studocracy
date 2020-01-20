@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
@@ -18,14 +20,16 @@ Future<List<Feedback>> getFeedbackList(String lectureId) async {
   //return allFeedbackFromJson('[{"clientId": "12348","message": "Very boring","sentiment": 2,"lecture": {"id": "lecture0"}}]');
 }
 
-Future<Feedback> postFeedback(Feedback feedback) async {
-  final response = await http.get('${config.baseUrl}/feedback/${feedback.lecture.id}',
-      headers: config.headers);
-  print("REQ: ${config.baseUrl}/feedback/${feedback.lecture.id}");
+Future<bool> postFeedback(Feedback feedback) async {
+  final String lectureId = feedback.lecture.id;
+  final response = await http.post('${config.baseUrl}/feedback/$lectureId',
+      headers: config.headers,
+      body: json.encode(feedback.toJson()));
+  print("REQ: ${config.baseUrl}/feedback/$lectureId");
   if (response.statusCode != 200)
-    print(response.statusCode);
+    return false;
   else {
     print("RESP: ${response.body}");
   }
-  return feedbackFromJson(response.body);
+  return true;
 }

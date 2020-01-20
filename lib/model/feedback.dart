@@ -45,7 +45,7 @@ class Feedback {
   Map<String, dynamic> toJson() => {
     "clientId": clientId,
     "message": message,
-    "created": created,
+    "created": created.toString(),
     "sentiment": sentiment,
     "lecture": lecture.toJson(),
   };

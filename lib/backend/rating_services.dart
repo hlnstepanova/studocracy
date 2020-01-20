@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'dart:async';
+import 'package:device_info/device_info.dart';
+
 
 import 'services_config.dart' as config;
 import '../model/rating.dart';
@@ -29,15 +33,17 @@ Future<Rating> getRatingByCategory(String lectureId, String category) async {
   //return ratingFromJson('{"clientId": "12348","category": "speed","value": 2,"lecture": {"id": "lecture0"}}');
 }
 
-Future<Rating> postRatingByCategory(Rating rating, String category) async {
-  final response = await http.get('${config.baseUrl}/rating/${rating.lecture.id}/$category',
-      headers: config.headers);
-  print("REQ: ${config.baseUrl}/rating/${rating.lecture.id}/$category");
+Future<bool> postRatingByCategory(Rating rating, String category) async {
+  final String lectureId = rating.lecture.id;
+  final response = await http.post('${config.baseUrl}/rating/$lectureId',
+      headers: config.headers,
+      body: json.encode(rating.toJson()));
+  print("REQ: ${config.baseUrl}/rating/$lectureId/$category");
   if (response.statusCode != 200)
-    print(response.statusCode);
+    return false;
   else {
     print("RESP: ${response.body}");
   }
-  return ratingFromJson(response.body);
+  return true;
 }
 
