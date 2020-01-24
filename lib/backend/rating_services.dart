@@ -39,6 +39,7 @@ Future<bool> postRatingByCategory(Rating rating, String category) async {
       headers: config.headers,
       body: json.encode(rating.toJson()));
   print("REQ: ${config.baseUrl}/rating/$lectureId/$category");
+  print("REQ: ${rating.toJson()}");
   if (response.statusCode != 200)
     return false;
   else {
