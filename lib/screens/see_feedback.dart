@@ -4,6 +4,7 @@ import 'package:studocracy/widgets/see_feedback_screen/feedbackList.dart';
 import 'package:studocracy/widgets/see_feedback_screen/ratingIcon.dart';
 import '../style.dart';
 
+
 class ProfessorFeedback extends StatelessWidget {
   final Lecture lecture;
 
@@ -27,13 +28,13 @@ class ProfessorFeedback extends StatelessWidget {
                       Center(child: Text("Speed", style: SentimentTextStyle)),
                       Center(
                           child:
-                              Text("Handwriting", style: SentimentTextStyle)),
-                      Center(child: Text("Content", style: SentimentTextStyle)),
+                              Text("Understanding", style: SentimentTextStyle)),
+                      //Center(child: Text("Content", style: SentimentTextStyle)),
                     ]),
                     TableRow(children: [
                       RatingIcon(lecture.id, 'speed'),
-                      RatingIcon(lecture.id, 'handwriting'),
-                      RatingIcon(lecture.id, 'content')
+                      RatingIcon(lecture.id, 'understanding'),
+                      //RatingIcon(lecture.id, 'content')
                     ])
                   ],
                 ),
