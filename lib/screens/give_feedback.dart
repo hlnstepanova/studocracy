@@ -211,7 +211,7 @@ class _GiveFeedbackState extends State<GiveFeedback> {
             ),
           new Container (
               width: double.infinity,
-              child:Center(child: Text("Give immidiate feedback:", style: TextStyle(color: Colors.white))),
+              child:Center(child: Text("Give immediate feedback:", style: TextStyle(color: Colors.white))),
               color: Colors.blue),
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
