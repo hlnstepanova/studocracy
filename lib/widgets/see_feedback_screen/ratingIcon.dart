@@ -31,8 +31,8 @@ class _RatingIconState extends State<RatingIcon>{
 
   void _populateRating(String lectureId, String category){
     getRatingByCategory(lectureId, category).then((rating){
-      print("Rating for $lectureId in $category: ${rating.value}");
-      setState(() => {_ratingValue = rating.value});
+      print("Rating for $lectureId in $category: ${rating}");
+      setState(() => {_ratingValue = rating});
     });
     
   }
