@@ -43,4 +43,10 @@ class _RatingIconState extends State<RatingIcon>{
     return helpers.setIcon(value, true);
   }
 
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
 }

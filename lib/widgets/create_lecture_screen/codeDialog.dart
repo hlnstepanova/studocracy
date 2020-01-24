@@ -34,10 +34,7 @@ class codeDialog extends StatelessWidget {
           new FlatButton(
               child: new Text("Next"),
               onPressed: () => {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfessorFeedback(lecture)),
-                ).then((result) {
+                Navigator.push(context, new ProfessorFeedbackRoute(lecture)).then((result) {
               Navigator.of(context).pop();
               })
               })
