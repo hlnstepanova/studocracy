@@ -113,14 +113,15 @@ class _GiveFeedbackState extends State<GiveFeedback> {
           children:[
                 new Container (
                     width: double.infinity,
+                    height: 50,
                     child: Visibility(
                     child: Center(child: Text("Please rate the lecture, before your device turns off.",
                     style: TextStyle(
                         fontSize: 18,
-                        color: Colors.red
+                        color: Colors.white
                     ),)),
-                  visible: this.batteryLow),
-                  color: Colors.red,
+                    visible: this.batteryLow),
+                    color: Colors.red,
                 ),
           new Container (
               width: double.infinity,
