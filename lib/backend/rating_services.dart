@@ -20,7 +20,7 @@ Future<List<Rating>> getRatings(String lectureId) async {
   return allRatingsFromJson(response.body);
 }
 
-Future<Rating> getRatingByCategory(String lectureId, String category) async {
+Future<double> getRatingByCategory(String lectureId, String category) async {
   final response = await http.get('${config.baseUrl}/rating/$lectureId/$category',
       headers: config.headers);
   print("REQ: ${config.baseUrl}/rating/$lectureId/$category");
@@ -29,7 +29,7 @@ Future<Rating> getRatingByCategory(String lectureId, String category) async {
   else {
     print("RESP: ${response.body}");
   }
-  return ratingFromJson(response.body);
+  return double.parse(response.body);
   //return ratingFromJson('{"clientId": "12348","category": "speed","value": 2,"lecture": {"id": "lecture0"}}');
 }
 
@@ -39,6 +39,7 @@ Future<bool> postRatingByCategory(Rating rating, String category) async {
       headers: config.headers,
       body: json.encode(rating.toJson()));
   print("REQ: ${config.baseUrl}/rating/$lectureId/$category");
+  print("REQ: ${rating.toJson()}");
   if (response.statusCode != 200)
     return false;
   else {

@@ -5,9 +5,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:studocracy/screens/join_lecture.dart';
-import 'screens/create_lecture.dart';
-import 'screens/see_feedback.dart';
+import 'package:studocracy/screens/choose_role.dart';
+import 'package:studocracy/screens/create_lecture.dart';
 import 'screens/choose_role.dart';
 import 'style.dart';
 

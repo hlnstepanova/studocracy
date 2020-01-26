@@ -44,6 +44,12 @@ class _FeedbackListState extends State<FeedbackList> {
         itemBuilder: _buildItemsForListView);
   }
 
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   ListTile _buildItemsForListView(BuildContext context, int index) {
     return ListTile(
       title: Text(_feedbackList[index].message, style: BodyTextStyle),

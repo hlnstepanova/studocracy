@@ -26,6 +26,7 @@ Future<bool> postFeedback(Feedback feedback) async {
       headers: config.headers,
       body: json.encode(feedback.toJson()));
   print("REQ: ${config.baseUrl}/feedback/$lectureId");
+  print("REQ: ${feedback.toJson()}");
   if (response.statusCode != 200)
     return false;
   else {
