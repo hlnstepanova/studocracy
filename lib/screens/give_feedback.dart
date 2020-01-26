@@ -66,7 +66,7 @@ class _GiveFeedbackState extends State<GiveFeedback> {
 
   void sendFeedback(){
     _getId().then((clientId) => {
-      postFeedback(new ModelFeedback.Feedback(clientId: clientId, message: feedbackController.text, created: null, sentiment: 0, lecture: new ModelFeedback.Lecture(id: this.lecture.id))).then((received) => {
+      postFeedback(new ModelFeedback.Feedback(clientId: clientId, message: feedbackController.text, sentiment: 0, lecture: new ModelFeedback.Lecture(id: this.lecture.id))).then((received) => {
         this.showToast(received, "Feedback accepted", "Feedback rejected")
       })
     });
