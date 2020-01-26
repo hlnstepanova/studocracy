@@ -48,7 +48,7 @@ class _GiveFeedbackState extends State<GiveFeedback> {
   void checkBatteryStatus() async {
     int batteryLevel = await Battery().batteryLevel;
     setState(() {
-      if(batteryLevel <= 15){
+      if(batteryLevel <= 99){
       this.batteryLow = true;
       } else {
       this.batteryLow = false;
@@ -59,7 +59,7 @@ class _GiveFeedbackState extends State<GiveFeedback> {
   void sendRating(String category, double value){
     _getId().then((clientId) => {
     postRatingByCategory(new Rating(clientId: clientId, category: category, value: value, lecture: new Lecture(id: this.lecture.id)), category).then((received) => {
-      this.showToast(received, "Rating accepted", "Rating rejected")
+      this.showToast(received, "Rating accepted", "Please wait 5 minutes before giving another rating.")
     })
     });
   }
@@ -67,7 +67,7 @@ class _GiveFeedbackState extends State<GiveFeedback> {
   void sendFeedback(){
     _getId().then((clientId) => {
       postFeedback(new ModelFeedback.Feedback(clientId: clientId, message: feedbackController.text, sentiment: 0, lecture: new ModelFeedback.Lecture(id: this.lecture.id))).then((received) => {
-        this.showToast(received, "Feedback accepted", "Feedback rejected")
+        this.showToast(received, "Feedback accepted", "Please wait 5 minutes, before giving another feedback.")
       })
     });
   }
