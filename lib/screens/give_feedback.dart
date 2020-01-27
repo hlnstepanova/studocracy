@@ -64,9 +64,9 @@ class _GiveFeedbackState extends State<GiveFeedback> {
     });
   }
 
-  void sendFeedback(){
+  void sendFeedback(int sentiment){
     _getId().then((clientId) => {
-      postFeedback(new ModelFeedback.Feedback(clientId: clientId, message: feedbackController.text, sentiment: 0, lecture: new ModelFeedback.Lecture(id: this.lecture.id))).then((received) => {
+      postFeedback(new ModelFeedback.Feedback(clientId: clientId, message: feedbackController.text, sentiment: sentiment, lecture: new ModelFeedback.Lecture(id: this.lecture.id))).then((received) => {
         this.showToast(received, "Feedback accepted", "Please wait 5 minutes, before giving another feedback.")
       })
     });
@@ -218,15 +218,39 @@ class _GiveFeedbackState extends State<GiveFeedback> {
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                      width: 250,
-                      child: StyleInputText("Enter comment", feedbackController)),
-                  StyleButton("Send",
+                  Expanded(
+                      child: StyleInputText("Enter comment and choose your mood", feedbackController))]),
+
+                  Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        IconButton(
+                      icon: Icon(Icons.sentiment_very_dissatisfied, color: Colors.red),
+                      iconSize: 50,
+                      onPressed:(){
+                        sendFeedback(2);
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      }),
+                      IconButton(
+                          icon: Icon(Icons.sentiment_dissatisfied, color: Colors.orange),
+                          iconSize: 50,
                           onPressed:(){
-                              sendFeedback();
-                              FocusScope.of(context).requestFocus(new FocusNode());
-                          })
-                ])
+                            sendFeedback(5);
+                            FocusScope.of(context).requestFocus(new FocusNode());
+                          }),
+                      IconButton(
+                          icon: Icon(Icons.sentiment_satisfied, color: Colors.yellow),
+                          iconSize: 50,
+                          onPressed:(){
+                            sendFeedback(7);
+                            FocusScope.of(context).requestFocus(new FocusNode());
+                          }),
+                      IconButton(
+                          icon: Icon(Icons.sentiment_very_satisfied, color: Colors.green),
+                          iconSize: 50,
+                          onPressed:(){
+                            sendFeedback(9);
+                            FocusScope.of(context).requestFocus(new FocusNode());
+                          })])
           ]
       ))
     ));
