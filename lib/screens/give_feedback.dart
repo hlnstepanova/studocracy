@@ -48,7 +48,7 @@ class _GiveFeedbackState extends State<GiveFeedback> {
   void checkBatteryStatus() async {
     int batteryLevel = await Battery().batteryLevel;
     setState(() {
-      if(batteryLevel <= 99){
+      if(batteryLevel <= 15){
       this.batteryLow = true;
       } else {
       this.batteryLow = false;
@@ -78,6 +78,7 @@ class _GiveFeedbackState extends State<GiveFeedback> {
     if(positive) {
       color = Colors.green;
       message = positiveMessage;
+      this.feedbackController.text = '';
     }
     Fluttertoast.showToast(
         msg: message,
@@ -223,7 +224,6 @@ class _GiveFeedbackState extends State<GiveFeedback> {
                   StyleButton("Send",
                           onPressed:(){
                               sendFeedback();
-                              this.feedbackController.text = '';
                               FocusScope.of(context).requestFocus(new FocusNode());
                           })
                 ])
