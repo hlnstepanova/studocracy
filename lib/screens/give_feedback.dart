@@ -112,17 +112,17 @@ class _GiveFeedbackState extends State<GiveFeedback> {
       child: Center(
       child: ListView(
           children:[
-                new Container (
+            Visibility(
+              child: new Container (
                     width: double.infinity,
                     height: 50,
-                    child: Visibility(
                     child: Center(child: Text("Please rate the lecture, before your device turns off.",
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.white
                     ),)),
-                    visible: this.batteryLow),
-                    color: Colors.red,
+                    color: Colors.red),
+                visible: this.batteryLow
                 ),
           new Container (
               width: double.infinity,
