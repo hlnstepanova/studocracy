@@ -1,5 +1,7 @@
 # Studocracy
-Get feedback from your audience!
+<i>Get feedback from your audience! </i><br>
+
+<a href="https://play.google.com/store/apps/details?id=de.tudresden.studocracy"><img src="https://github.com/hlnstepanova/Vocabulario/blob/master/screenshots/google.png"></a><br>
 
 ![description](assets/images/final_ui/description_noframe.png)
 
