@@ -14,8 +14,7 @@ This way the professors can adjust their lectures to the need of the audience, l
 
 The app is also presents a good opportunity for the students who are shy to ask a question or simply don't want to shout across the lecture hall.
 
-The backend was built with Aqueduct and can be found here:
-https://github.com/hlnstepanova/studocracy-backend
+The backend was built with Aqueduct and can be found [here](https://github.com/hlnstepanova/studocracy-backend)
 
 ![description](assets/images/final_ui/crossplatform.png)
 ![description](assets/images/final_ui/simple.png)
